@@ -2,10 +2,12 @@
 	"name": "2-my-store_bakend-express-api",
 	"version": "1.0.0",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
+		"dev": "nodemon index.js",
+		"start": "node index.js",
 		"lint": "eslint",
 		"fix:lint": "eslint --fix",
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"format:check": "prettier --check .",
 		"format": "prettier --write ."
 	},
@@ -14,6 +16,7 @@
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
+		"express": "^4.21.1",
 		"nodemon": "^3.1.7"
 	},
 	"devDependencies": {
