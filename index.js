@@ -5,6 +5,8 @@ import routerApi from './routes/index.js';
 
 const app = express();
 const port = 3000;
+// midleware for json
+app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.send('Express Server');
