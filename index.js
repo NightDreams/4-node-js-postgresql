@@ -1,4 +1,3 @@
-// const express = require('express');
 import express from 'express';
 
 import routerApi from './routes/index.js';
@@ -14,20 +13,6 @@ app.get('/', (req, res) => {
 
 app.get('/nueva-ruta', (req, res) => {
 	res.send('Nueva ruta');
-});
-
-app.get('/users', (req, res) => {
-	const { limit, offset } = req.query;
-	if (limit && offset) {
-		res.json({ limit, offset });
-	} else {
-		res.send('No hay parametros');
-	}
-});
-
-app.get('/categories/:categoryId/products/:productId', (req, res) => {
-	const { categoryId, productId } = req.params;
-	res.json({ categoryId, productId });
 });
 
 routerApi(app);
