@@ -14,10 +14,15 @@ router.get('/filter', (req, res) => {
 	res.json('soy filter');
 });
 
-router.get('/:id', async (req, res) => {
-	const { id } = req.params;
-	const product = await service.findOne(id);
-	res.status(201).json(product);
+router.get('/:id', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const product = await service.findOne(id);
+		res.status(201).json(product);
+	} catch (error) {
+		// run middlewar for errors
+		next(error);
+	}
 });
 
 router.post('/', async (req, res) => {
