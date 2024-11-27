@@ -18,6 +18,7 @@
 	"dependencies": {
 		"@hapi/boom": "^10.0.1",
 		"express": "^4.21.1",
+		"joi": "^17.13.3",
 		"nodemon": "^3.1.7"
 	},
 	"devDependencies": {
