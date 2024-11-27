@@ -14,5 +14,15 @@ function errorHandler(err, req, res, next) {
 		stack: err.stack,
 	});
 }
+function boomErrorHandler(err, req, res, next) {
+	if (err.isBoom) {
+		// informacion del error
+		const { output } = err;
+		res.status(output.statusCode).json(output.payload);
+	} else {
+		// run mid normal - cualquier que no sea de boom.
+		next(err);
+	}
+}
 
-export { logErrors, errorHandler };
+export { logErrors, errorHandler, boomErrorHandler };
