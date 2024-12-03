@@ -1,5 +1,6 @@
 import express from 'express';
 import routerApi from './routes/index.js';
+import cors from 'cors';
 
 import {
 	errorHandler,
@@ -11,6 +12,22 @@ const app = express();
 const port = 3000;
 // midleware for json
 app.use(express.json());
+
+const whitelist = [
+	'http://localhost:8080',
+	'http://127.0.0.1:8080',
+	'https://myapp.co',
+];
+const options = {
+	origin: (origin, callback) => {
+		if (whitelist.includes(origin) || !origin) {
+			callback(null, true);
+		} else {
+			callback(new Error('no permitido'));
+		}
+	},
+};
+app.use(cors(options));
 
 app.get('/', (req, res) => {
 	res.send('Express Server');
