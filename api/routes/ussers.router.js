@@ -1,6 +1,8 @@
 import express from 'express';
+
 import UserService from '../services/user.service.js';
 import { validatorHandler } from '../middlewares/validator.handler.js';
+
 import {
 	updateUserSchema,
 	createUserSchema,
@@ -9,6 +11,7 @@ import {
 
 const router = express.Router();
 const service = new UserService();
+
 router.get('/', async (req, res, next) => {
 	try {
 		const users = await service.find();
