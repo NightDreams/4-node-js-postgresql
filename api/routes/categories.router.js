@@ -1,5 +1,7 @@
 import express from 'express';
 import CategoryService from '../services/categorie.service.js';
+import { validatorHandler } from '../middlewares/validator.handler.js';
+
 import {
 	createCategorySchema,
 	updateCategorySchema,
