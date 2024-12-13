@@ -3,11 +3,9 @@ const { Pool } = pg;
 
 import { config } from '../../config/config.js';
 
-const pool = new Pool({
-	host: config.dbHost,
-	port: config.dbPort,
-	user: config.dbUser,
-	password: config.dbPassword,
-	database: config.dbName,
-});
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+
+const pool = new Pool({ connectionString: URI });
 export { pool };
