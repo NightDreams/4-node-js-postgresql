@@ -1,11 +1,8 @@
 import boom from '@hapi/boom';
-import { pool } from '../libs/postgres.pool.js';
+import { sequelize } from '../libs/sequelize.js';
 
 class UserService {
-	constructor() {
-		this.pool = pool;
-		this.pool.on('error', err => console.log(err));
-	}
+	constructor() {}
 
 	async create(data) {
 		return data;
@@ -13,8 +10,9 @@ class UserService {
 
 	async find() {
 		const query = 'SELECT * FROM tasks';
-		const rta = await this.pool.query(query);
-		return rta.rows;
+		const [data] = await sequelize.query(query);
+
+		return { data };
 	}
 
 	async findOne(id) {
