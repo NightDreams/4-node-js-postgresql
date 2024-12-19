@@ -1,4 +1,5 @@
 import boom from '@hapi/boom';
+
 import { sequelize } from '../libs/sequelize.js';
 
 class UserService {
@@ -9,10 +10,8 @@ class UserService {
 	}
 
 	async find() {
-		const query = 'SELECT * FROM tasks';
-		const [data] = await sequelize.query(query);
-
-		return { data };
+		const rta = await sequelize.models.User.findAll();
+		return { rta };
 	}
 
 	async findOne(id) {
